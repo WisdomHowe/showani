@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>仿WOW-基于animate.css开发页面滚动显示动画</title>
+  <link rel="stylesheet" href="./style/base.css">
+  <link rel="stylesheet" href="./style/animate.min.css">
+  <script src="./script/showani.js"></script>
+  <style>
+    *{margin: 0; padding: 0;}
+    .div{width: 100%; margin: 0 auto;}
+    .div div{width: 100%; margin-bottom: 50px;}
+    .div img{width: 100%;}
+    #add{display: block; margin: 50px auto;}
+  </style>
+</head>
+<body>
+  <div class="div">
+    <div class="showAni" data-showani-class="fadeInUp"><img src="image/img.jpg" alt=""></div>
+    <div class="showAni" data-showani-class="fadeInLeft" data-showani-offset="100" data-showani-reset="true"><img src="image/img.jpg" alt=""></div>
+    <div class="showAni" data-showani-class="fadeInUp" data-showani-offset="100" data-showani-reset="false"><img src="image/img.jpg" alt=""></div>
+    <div class="showAni" data-showani-class="fadeInUp" data-showani-offset="100" data-showani-delay="0.3s"><img src="image/img.jpg" alt=""></div>
+    <div class="showAni" data-showani-class="fadeInUp"><img src="image/img.jpg" alt=""></div>
+    <div class="showAni" data-showani-class="fadeInUp"><img src="image/img.jpg" alt=""></div>
+    <div class="showAni" data-showani-class="fadeInUp"><img src="image/img.jpg" alt=""></div>
+    <div class="showAni" data-showani-class="fadeInUp" data-showani-offset="100"><img src="image/img.jpg" alt=""></div>
+  </div>
+  <button id="add">加载更多</button>
+
+  <script>
+    var showAnimate = new ShowAni({
+      offset: 100,
+      live: true,
+      reset: true
+    });
+
+    //仿造异步添加数据
+    var add = document.querySelector("#add");
+    var div = document.querySelector(".div");
+    add.onclick = function(){
+      var html = '<div class="showAni" data-wow-class="fadeInUp"><img src="image/img.jpg" alt=""></div><div class="showAni" data-wow-class="fadeInUp"><img src="image/img.jpg" alt=""></div><div class="showAni" data-wow-class="fadeInUp"><img src="image/img.jpg" alt=""></div>';
+      div.insertAdjacentHTML("beforeEnd", html);
+    }
+    window.onload = function(){
+    	showAnimate.init();
+    }
+    
+  </script>
+</body>
+</html>
